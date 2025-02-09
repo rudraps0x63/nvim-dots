@@ -22,32 +22,32 @@ require('common').setup()
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        'git',
-        'clone',
-        '--filter=blob:none',
-        'https://github.com/folke/lazy.nvim.git',
-        '--branch=stable', -- latest stable release
-        lazypath
-    })
+  vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath
+  })
 end
-
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup external plugins in lua/plugins
 require('lazy').setup({
-    change_detection = {
-        enabled = true,
-        notify = false -- get a notification when changes are found
-    },
-    spec = {
-        { import = 'plugins' },
-        { import = 'plugins.lsp' }
-    }
+  change_detection = {
+    enabled = true,
+    notify = false -- get a notification when changes are found
+  },
+  spec = {
+    { import = 'plugins' },
+    { import = 'plugins.lsp' }
+  },
+  ui = {
+    border = require('util.util').PREFERRED_BORDER_STYLE
+  }
 })
+
 -- All plugins loaded, keymaps available
 require('keymaps').setup()
-
--- Commands that should be run after major plugins are setup
--- require('which-key').setup({ loop = true })
 
