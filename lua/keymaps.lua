@@ -52,6 +52,8 @@ M.setup = function()
     vim.cmd('term')
     vim.api.nvim_win_set_height(0, 15)
   end, { desc = 'Open terminal window' })
+
+  Util.set_mapping('n', '<Space>q', '<cmd>helpclose<CR>')
 end
 
 return M

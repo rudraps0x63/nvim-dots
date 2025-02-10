@@ -1,18 +1,5 @@
 return {
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup({
-        icons_enabled = true,
-        options = {
-          section_separators = ' ', component_separators = ' ',
-          theme = 'vague'
-        }
-      })
-    end
-  },
-  {
     -- NvimTree: File system explorer (:h NvimTree)
     'nvim-tree/nvim-tree.lua',
     version = '*',
@@ -23,7 +10,14 @@ return {
       renderer = {
         indent_markers = {
           enable = true,
-          inline_arrows = true
+          inline_arrows = true,
+          icons = {
+            corner = "└",
+            edge = "│",
+            item = "│",
+            bottom = "─",
+            none = " ",
+          }
         },
       },
       diagnostics = {
