@@ -95,6 +95,14 @@ return {
               desc = 'Get hover information'
             })
           end
+
+          -- if client.supports_method(ms.textDocument_publishDiagnostics) then
+          --   local publish_diag = vim.lsp.handlers[ms.textDocument_publishDiagnostics]
+          --
+          --   vim.lsp.handlers[ms.textDocument_publishDiagnostics] = function(err, result, ctx, config)
+          --     publish_diag(err, result, ctx, config)
+          --   end
+          -- end
         end
       })
 

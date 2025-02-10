@@ -35,15 +35,16 @@ M.setup = function()
     Util.set_mapping('n', '<Leader>bb', builtin.buffers, { desc = 'Grep for listed buffers' })
 
     Util.set_mapping('n', '<Leader>re', builtin.resume, { desc = 'Resume the previous fuzzy search operation' })
+    Util.set_mapping('n', '<Leader>ld', builtin.diagnostics, { desc = 'Get diagnostics for current buffer' })
   end
 
   Util.set_mapping('n', ']b', '<cmd>bnext<CR>', { desc = 'Go to next buffer' })
   Util.set_mapping('n', '[b', '<cmd>bprev<CR>', { desc = 'Go to previous buffer' })
 
-  vim.keymap.set('n', '<Leader>2', '<Cmd>try | cnext | catch | cfirst | catch | endtry<CR>', {
+  vim.keymap.set('n', ']q', '<Cmd>try | cnext | catch | cfirst | catch | endtry<CR>', {
     desc = 'Try to go to next item in qflist'
   })
-  vim.keymap.set('n', '<Leader>1', '<Cmd>try | cprevious | catch | clast | catch | endtry<CR>', {
+  vim.keymap.set('n', '[q', '<Cmd>try | cprevious | catch | clast | catch | endtry<CR>', {
     desc = 'Try to go to previous item in qflist'
   })
 

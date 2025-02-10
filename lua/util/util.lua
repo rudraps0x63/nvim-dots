@@ -2,7 +2,6 @@ local M = {}
 local api = vim.api
 
 local zindex = 1
-local autocmd_id = -1
 local win_stack = {} -- Map of actual window handles (non floats) to arrays of window handles (floats)
 
 M.ENV_HOME = os.getenv('HOME') or ''
@@ -113,11 +112,6 @@ local close_win = function(data)
   --
   -- print("NOT Leaving as gname: " .. gname)
 
-  if data.id ~= autocmd_id then
-    -- print("Leaving as : " .. data.id .. '~=' .. autocmd_id)
-    return
-  end
-
   -- print("NOT Leaving as : " .. data.id .. '==' .. autocmd_id)
 
   local win = api.nvim_get_current_win();
@@ -136,7 +130,7 @@ local close_win = function(data)
     if cur_win == win then
       local j = i
 
-      print('Removing from posi: ' .. j .. ', total: ' .. len)
+      -- print('Removing from posi: ' .. j .. ', total: ' .. len)
 
       while j < len do
         fl_win_list[j] = fl_win_list[j + 1]
@@ -223,7 +217,7 @@ M.create_floating_window = function(data, opts)
   api.nvim_win_set_cursor(fl_win, cursor_pos)
 
   -- Create closing events depending on type of window
-  autocmd_id = api.nvim_create_autocmd('WinClosed', {
+  _ = api.nvim_create_autocmd('WinClosed', {
     group = api.nvim_create_augroup(LSP_HEIRARCHY_GROUP_NAME, { clear = true }),
     callback = close_win
   })

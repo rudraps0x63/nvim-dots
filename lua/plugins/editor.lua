@@ -113,30 +113,5 @@ return {
       loop = true
     }
   },
-  {
-    "folke/trouble.nvim",
-    cmd = "Trouble",
-    opts = {
-      mode = {
-        diagnostics = {
-          auto_open = false,
-          auto_preview = false,
-          warn_no_results = true,
-          open_no_results = true,
-        }
-      }
-    }, -- for default options, refer to the configuration section for custom setup.
-    keys = {
-      {
-        "<leader>xx",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-    },
-    config = function()
-      require('trouble').setup({
-      })
-    end
-  }
 }
 
