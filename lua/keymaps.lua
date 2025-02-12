@@ -41,20 +41,22 @@ M.setup = function()
   Util.set_mapping('n', ']b', '<cmd>bnext<CR>', { desc = 'Go to next buffer' })
   Util.set_mapping('n', '[b', '<cmd>bprev<CR>', { desc = 'Go to previous buffer' })
 
-  vim.keymap.set('n', ']q', '<Cmd>try | cnext | catch | cfirst | catch | endtry<CR>', {
+  Util.set_mapping('n', '<Space>q', '<cmd>copen<CR>', { desc = 'Open quickfix list' })
+  Util.set_mapping('n', '<Space>qo', '<cmd>cclose<CR>', { desc = 'Close quickfix list' })
+  Util.set_mapping('n', ']q', '<cmd>try | cnext | catch | cfirst | catch | endtry<CR>', {
     desc = 'Try to go to next item in qflist'
   })
-  vim.keymap.set('n', '[q', '<Cmd>try | cprevious | catch | clast | catch | endtry<CR>', {
+  Util.set_mapping('n', '[q', '<cmd>try | cprevious | catch | clast | catch | endtry<CR>', {
     desc = 'Try to go to previous item in qflist'
   })
+
+  Util.set_mapping('n', '<Space>h', '<cmd>helpclose<CR>')
 
   Util.set_mapping('n', '<Space>tt', function()
     vim.cmd('new')
     vim.cmd('term')
     vim.api.nvim_win_set_height(0, 15)
   end, { desc = 'Open terminal window' })
-
-  Util.set_mapping('n', '<Space>q', '<cmd>helpclose<CR>')
 end
 
 return M

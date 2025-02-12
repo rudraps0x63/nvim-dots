@@ -3,10 +3,8 @@ return {
     'ibhagwan/fzf-lua',
     dependencies = { "echasnovski/mini.icons" },
     config = function()
-      local fzf_lua = require('fzf-lua')
-
-      fzf_lua.setup({
-        { 'telescope' },
+      require('fzf-lua').setup({
+        { 'telescope' }, -- Base profile
         defaults = { -- "Global" picker defaults, applied when a picker is active
           actions = {
             ['C-q'] = require('fzf-lua').actions.set_qflsit,
@@ -20,11 +18,6 @@ return {
               horizontal = "right:61%",
             }
           },
-        },
-        keymap = {
-          builtin = {
-            ['<Leader>ff'] = fzf_lua.files
-          }
         },
         files = {
           cmd = "rg --files",
