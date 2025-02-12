@@ -1,3 +1,5 @@
+local Util = require('util.util')
+
 return {
   {
     'ibhagwan/fzf-lua',
@@ -16,7 +18,13 @@ return {
             preview = {
               vertical = "up:45%",
               horizontal = "right:61%",
-            }
+            },
+            on_create = function()
+              Util.set_mapping('t', '<C-p>', require('fzf-lua').win.toggle_preview, {
+                silent = true, buffer = true,
+                desc = 'Toggle fzf-lua preview'
+              })
+            end
           },
         },
         files = {
