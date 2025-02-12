@@ -48,7 +48,15 @@ return {
   {
     -- Telescope, a fuzzy finder for files/grepping (:h telescope)
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      {
+        'nvim-lua/plenary.nvim'
+      },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+      }
+    },
     config = function()
       require('telescope').setup({
         defaults = {
@@ -82,6 +90,7 @@ return {
           },
         },
       })
+      require('telescope').load_extension('fzf')
     end
   },
   {

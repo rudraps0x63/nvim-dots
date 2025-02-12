@@ -3,7 +3,7 @@ local Util = require('util.util')
 
 M.setup = function()
   local nt_api = require('nvim-tree.api')
-  local builtin = require('telescope.builtin')
+  local builtin = require('fzf-lua')
 
   if nt_api ~= nil then
     Util.set_mapping('n', '<Leader>tt', nt_api.tree.toggle, { desc = 'Toggle file tree' })
@@ -22,9 +22,9 @@ M.setup = function()
       end
     end
 
-    Util.set_mapping('n', '<Leader>ff', builtin.find_files, { desc = 'Grep for files' })
+    Util.set_mapping('n', '<Leader>ff', builtin.files, { desc = 'Grep for files' })
     Util.set_mapping('n', '<Leader>Ff', function()
-      apply_func_dir_under_cursor(builtin.find_files)
+      apply_func_dir_under_cursor(builtin.files)
     end, { desc = 'Grep for files under cursor in file tree' })
 
     Util.set_mapping('n', '<Leader>lg', builtin.live_grep, { desc = 'Fuzzy live grep' })
@@ -35,7 +35,7 @@ M.setup = function()
     Util.set_mapping('n', '<Leader>bb', builtin.buffers, { desc = 'Grep for listed buffers' })
 
     Util.set_mapping('n', '<Leader>re', builtin.resume, { desc = 'Resume the previous fuzzy search operation' })
-    Util.set_mapping('n', '<Leader>ld', builtin.diagnostics, { desc = 'Get diagnostics for current buffer' })
+    Util.set_mapping('n', '<Leader>ld', builtin.lsp_document_diagnostics, { desc = 'Get diagnostics for current buffer' })
   end
 
   Util.set_mapping('n', ']b', '<cmd>bnext<CR>', { desc = 'Go to next buffer' })
