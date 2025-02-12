@@ -7,7 +7,7 @@ return {
         { 'telescope' }, -- Base profile
         defaults = { -- "Global" picker defaults, applied when a picker is active
           actions = {
-            ['C-q'] = require('fzf-lua').actions.set_qflsit,
+            ['<C-q>'] = require('fzf-lua').actions.set_qflsit,
           },
           prompt = '> ',
           cwd_prompt = false,

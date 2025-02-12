@@ -34,8 +34,12 @@ M.setup = function()
 
     Util.set_mapping('n', '<Leader>bb', builtin.buffers, { desc = 'Grep for listed buffers' })
 
-    Util.set_mapping('n', '<Leader>re', builtin.resume, { desc = 'Resume the previous fuzzy search operation' })
-    Util.set_mapping('n', '<Leader>ld', builtin.lsp_document_diagnostics, { desc = 'Get diagnostics for current buffer' })
+    Util.set_mapping('n', '<Leader>re', builtin.resume, {
+      desc = 'Resume the previous fuzzy search operation'
+    })
+    Util.set_mapping('n', '<Leader>ld', builtin.lsp_document_diagnostics, {
+      desc = 'Get diagnostics for current buffer'
+    })
   end
 
   Util.set_mapping('n', ']b', '<cmd>bnext<CR>', { desc = 'Go to next buffer' })
