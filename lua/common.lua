@@ -45,7 +45,7 @@ local function setup_file_group_commands()
   -- If file is .c or .cpp, tabs are equal to 2 spaces
   vim.api.nvim_create_autocmd('FileType', {
     group = files,
-    pattern = { 'c', 'cpp', 'lua' },
+    pattern = { 'c', 'cpp', 'lua', 'cmake' },
     callback = function()
       vim.o.tabstop = 2
       vim.o.shiftwidth = 2

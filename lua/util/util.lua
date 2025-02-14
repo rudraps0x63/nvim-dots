@@ -203,6 +203,8 @@ M.create_floating_window = function(data, opts)
   if not vim.bo[fl_buf].buflisted then
     vim.bo[fl_buf].bufhidden = 'wipe'
     vim.bo[fl_buf].modifiable = false
+  else
+    winopts.title = ' [*]' .. winopts.title
   end
 
   -- If enter == true, the 'CursorMoved', 'CursorMovedI' and 'InsertCharPre' autocmds
