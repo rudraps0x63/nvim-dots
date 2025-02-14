@@ -45,14 +45,21 @@ M.setup = function()
   Util.set_mapping('n', ']b', '<cmd>bnext<CR>', { desc = 'Go to next buffer' })
   Util.set_mapping('n', '[b', '<cmd>bprev<CR>', { desc = 'Go to previous buffer' })
 
-  Util.set_mapping('n', '<Space>q', '<cmd>copen<CR>', { desc = 'Open quickfix list' })
-  Util.set_mapping('n', '<Space>qo', '<cmd>cclose<CR>', { desc = 'Close quickfix list' })
   Util.set_mapping('n', ']q', '<cmd>try | cnext | catch | cfirst | catch | endtry<CR>', {
     desc = 'Try to go to next item in qflist'
   })
   Util.set_mapping('n', '[q', '<cmd>try | cprevious | catch | clast | catch | endtry<CR>', {
     desc = 'Try to go to previous item in qflist'
   })
+  Util.set_mapping('n', '<Space>qq', function()
+    local qf_winid = vim.fn.getqflist({ winid = 0 }).winid
+
+    if qf_winid ~= 0 then
+      vim.cmd('cclose')
+    else
+      vim.cmd('copen')
+    end
+  end, { desc = 'Toggle quickfix list' })
 
   Util.set_mapping('n', '<Space>h', '<cmd>helpclose<CR>')
 
