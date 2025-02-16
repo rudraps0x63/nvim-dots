@@ -10,7 +10,7 @@ local mode_names = {
   ["r?"] = "?", ["!"] = "!", t = "T",
 }
 
-local normal_fg_clr = '#ffffe6'
+local normal_fg_clr = '#b47ede'
 local cmd_fg_clr = '#c48282'
 local ins_fg_clr = '#94ffb2'
 local mode_colors = {
@@ -32,6 +32,7 @@ local mode_colors = {
 local lualine_setup = function()
   local vague = require('lualine.themes.vague')
   local fg_clr = normal_fg_clr
+  -- local bg_clr = '#0d0d1c'
   local bg_clr = 'none'
 
   local lualine_a_icons = {
@@ -80,7 +81,7 @@ local lualine_setup = function()
           path = 1,
           symbols = { readonly = '[read-only]' },
           fmt = function(fname, _)
-            return fname .. ' 🪐.𖥔 ݁ ˖✦ ‧₊˚⋅'
+            return fname .. ' ✦'
           end
         },
       },

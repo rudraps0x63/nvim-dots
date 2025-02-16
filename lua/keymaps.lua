@@ -40,6 +40,10 @@ M.setup = function()
     Util.set_mapping('n', '<Leader>ld', builtin.lsp_document_diagnostics, {
       desc = 'Get diagnostics for current buffer'
     })
+
+    Util.set_mapping('n', '<Leader>@ff', function()
+      builtin.files({ cwd = vim.fn.stdpath('config') })
+    end, { desc = 'Find files in Neovim home directory' })
   end
 
   Util.set_mapping('n', ']b', '<cmd>bnext<CR>', { desc = 'Go to next buffer' })

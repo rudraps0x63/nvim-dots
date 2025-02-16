@@ -144,6 +144,17 @@ return {
     end
   },
   -- {
+  --   "anAcc22/sakura.nvim",
+  --   dependencies = {
+  --     'rktjmp/lush.nvim'
+  --   },
+  --   lazy = false,
+  --   config = function()
+  --     vim.cmd.colorscheme("sakura");
+  --     vim.cmd('hi Normal guibg=none');
+  --   end
+  -- }
+  -- {
   --   'rhysd/vim-color-spring-nigh',
   --   lazy = false,
   --   config = function()
