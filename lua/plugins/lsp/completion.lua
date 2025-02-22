@@ -22,15 +22,9 @@ return {
         menu = {
           auto_show = true,
           draw = { -- nvim-cmp style menu
-            components = {
-              kind_icon = {
-                ellipsis = false,
-                text = function(_) return '' end
-              }
-            },
             columns = {
               { "label", "label_description", gap = 1 },
-              { "kind_icon", "kind" }
+              { "kind" }
             },
           },
           border = Util.PREFERRED_BORDER_STYLE

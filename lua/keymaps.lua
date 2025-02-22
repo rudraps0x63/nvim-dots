@@ -5,11 +5,13 @@ M.setup = function()
   local nt_api = require('nvim-tree.api')
   local builtin = require('fzf-lua')
 
+  -- NvimTree
   if nt_api ~= nil then
     Util.set_mapping('n', '<Leader>tt', nt_api.tree.toggle, { desc = 'Toggle file tree' })
     Util.set_mapping('n', '<Leader>T', nt_api.tree.open, { desc = 'Focus file tree, open if not' })
   end
 
+  -- Picker
   if builtin ~= nil then
     local apply_func_dir_under_cursor = function(builtin_func)
       local cursor_dir = nt_api.tree.get_node_under_cursor()
@@ -26,6 +28,10 @@ M.setup = function()
     Util.set_mapping('n', '<Leader>Ff', function()
       apply_func_dir_under_cursor(builtin.files)
     end, { desc = 'Grep for files under cursor in file tree' })
+    -- Find files in nvim home
+    Util.set_mapping('n', '<Leader>@ff', function()
+      builtin.files({ cwd = vim.fn.stdpath('config') })
+    end, { desc = 'Find files in Neovim home directory' })
 
     Util.set_mapping('n', '<Leader>lg', builtin.live_grep, { desc = 'Fuzzy live grep' })
     Util.set_mapping('n', '<Leader>Lg', function()
@@ -37,15 +43,16 @@ M.setup = function()
     Util.set_mapping('n', '<Leader>re', builtin.resume, {
       desc = 'Resume the previous fuzzy search operation'
     })
+
     Util.set_mapping('n', '<Leader>ld', builtin.lsp_document_diagnostics, {
       desc = 'Get diagnostics for current buffer'
     })
-
-    Util.set_mapping('n', '<Leader>@ff', function()
-      builtin.files({ cwd = vim.fn.stdpath('config') })
-    end, { desc = 'Find files in Neovim home directory' })
+    Util.set_mapping('n', '<Leader>lref', builtin.lsp_references, {
+      desc = 'Show LSP references for under cursor'
+    })
   end
 
+  -- General
   Util.set_mapping('n', ']b', '<cmd>bnext<CR>', { desc = 'Go to next buffer' })
   Util.set_mapping('n', '[b', '<cmd>bprev<CR>', { desc = 'Go to previous buffer' })
 
