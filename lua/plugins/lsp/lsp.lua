@@ -65,6 +65,7 @@ return {
               local callback = function(err, result)
                 if err ~= nil or result == nil then
                   print(ms.textDocument_definition .. ': empty response: ' .. vim.inspect(err))
+
                   return
                 end
 

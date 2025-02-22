@@ -24,7 +24,6 @@ local find_in_table = function(tbl, key)
       return v
     end
   end
-
   return nil
 end
 

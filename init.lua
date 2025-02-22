@@ -12,9 +12,9 @@
 -- On startup
 require('common').setup()
 
--- vim.cmd('colorscheme zenburn')
 -- vim.g.zenburn_high_Contrast = 1
 -- vim.g.zenburn_disable_bold_CursorBars = 1
+-- vim.cmd('colorscheme zenburn')
 -- vim.cmd('hi IblScope ctermfg=248 guifg=#9fafaf')
 -- vim.cmd('hi Normal ctermbg=none guibg=none')
 

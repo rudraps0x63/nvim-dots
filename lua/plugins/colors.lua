@@ -16,37 +16,12 @@ return {
   --     end
   -- },
   -- {
-  --     'ribru17/bamboo.nvim',
-  --     lazy = false,
-  --     priority = 1000,
-  --     config = function()
-  --         -- vim.cmd('colorscheme bamboo')
-  --     end,
-  -- },
-  -- {
   --     'techtuner/aura-neovim',
   --     lazy = false,
   --     priority = 1000,
   --     config = function()
   --         -- vim.cmd('colorscheme aura')
   --     end
-  -- },
-  -- {
-  --     'Domeee/mosel.nvim',
-  --     lazy = false,
-  --     priority = 1000,
-  --     config = function()
-  --         -- vim.cmd('colorscheme mosel')
-  --     end
-  -- },
-  -- {
-  --   'ramojus/mellifluous.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('mellifluous').setup({}) -- optional, see configuration section.
-  --     vim.cmd('colorscheme mellifluous')
-  --   end,
   -- },
   -- {
   --     'DanielEliasib/sweet-fusion',
@@ -136,13 +111,52 @@ return {
         },
       })
 
-      vim.cmd('colorscheme vague')
-      vim.cmd('highlight IncSearch gui=bold guifg=#13151a guibg=#a2b2db')
-      vim.cmd('highlight MatchParen gui=bold guifg=#cdcdcd guibg=#363738')
-      vim.cmd('highlight IblIndent guifg=#2b2d36')
-      vim.cmd('highlight IblScope gui=none guifg=#8a8fa8')
+      -- vim.cmd('colorscheme vague')
+      -- vim.cmd('highlight IncSearch gui=bold guifg=#13151a guibg=#a2b2db')
+      -- vim.cmd('highlight MatchParen gui=bold guifg=#cdcdcd guibg=#363738')
+      -- vim.cmd('highlight IblIndent guifg=#2b2d36')
+      -- vim.cmd('highlight IblScope gui=none guifg=#8a8fa8')
     end
   },
+  {
+    'aliqyan-21/darkvoid.nvim',
+    config = function()
+      require('darkvoid').setup({
+        transparent = true,
+        glow = false,
+        show_end_of_buffer = false,
+        colors = {
+          string = '#8cf8f7'
+        }
+      })
+
+      vim.cmd.colorscheme('darkvoid')
+      vim.cmd('hi Normal guibg=none')
+      vim.cmd('hi NormalFloat guibg=none')
+      vim.cmd('hi StatusLine guibg=none')
+      vim.cmd('hi Keyword gui=bold')
+    end
+  },
+  -- {
+  --   "rockyzhang24/arctic.nvim",
+  --   branch = "v2",
+  --   dependencies = { "rktjmp/lush.nvim" },
+  --   config = function()
+  --     vim.cmd.colorscheme('arctic')
+  --   end
+  -- }
+  -- {
+  --   'hsi/lapland.nvim',
+  --   config = function()
+  --     vim.cmd.colorscheme('lapland')
+  --
+  --     vim.cmd('highlight IncSearch gui=bold guifg=#13151a guibg=#a2b2db')
+  --     vim.cmd('highlight MatchParen gui=bold guifg=#cdcdcd guibg=#363738')
+  --     vim.cmd('highlight IblIndent guibg=none guifg=#2b2d36')
+  --     vim.cmd('highlight IblWhitespace guibg=none guifg=#2b2d36')
+  --     vim.cmd('highlight IblScope gui=none guibg=none guifg=#8a8fa8')
+  --   end
+  -- },
   -- {
   --   "anAcc22/sakura.nvim",
   --   dependencies = {
@@ -154,12 +168,5 @@ return {
   --     vim.cmd('hi Normal guibg=none');
   --   end
   -- }
-  -- {
-  --   'rhysd/vim-color-spring-nigh',
-  --   lazy = false,
-  --   config = function()
-  --     vim.cmd('colorscheme spring-night')
-  --   end
-  -- },
 }
 

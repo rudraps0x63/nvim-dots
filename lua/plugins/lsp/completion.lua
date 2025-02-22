@@ -7,22 +7,40 @@ return {
     opts = {
       keymap = {
         preset = 'none',
-        ['K'] = { 'select_prev', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'fallback' },
         ['<Tab>'] = { 'select_next', 'fallback' },
-        ['T'] = { 'hide', 'fallback' },
+        ['<C-Space>'] = { 'hide', 'fallback' },
+        ['<C-l>'] = { 'snippet_forward', 'fallback' },
+        ['<C-h>'] = { 'snippet_backward', 'fallback' },
         ['<CR>'] = { 'accept', 'fallback' },
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
-        cmdline = {} -- Don't autocomplete for vim commands
+        cmdline = { enabled = true } -- Autocomplete for vim commands
       },
       completion = {
-        menu = { border = Util.PREFERRED_BORDER_STYLE },
+        menu = {
+          auto_show = true,
+          draw = { -- nvim-cmp style menu
+            components = {
+              kind_icon = {
+                ellipsis = false,
+                text = function(_) return '' end
+              }
+            },
+            columns = {
+              { "label", "label_description", gap = 1 },
+              { "kind_icon", "kind" }
+            },
+          },
+          border = Util.PREFERRED_BORDER_STYLE
+        },
         documentation = {
           window = { border = Util.PREFERRED_BORDER_STYLE }
         },
       },
       signature = {
+        enabled = true,
         window = { border = Util.PREFERRED_BORDER_STYLE }
       },
     },
