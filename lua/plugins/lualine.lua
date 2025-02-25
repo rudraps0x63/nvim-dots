@@ -15,9 +15,7 @@ local cmd_fg_clr = '#c48282'
 local ins_fg_clr = '#94ffb2'
 local mode_colors = {
   n = normal_fg_clr,
-  i = ins_fg_clr,
-  v = "cyan",
-  V =  "cyan",
+  i = ins_fg_clr, v = "cyan", V =  "cyan",
   ["\22"] =  "cyan",
   c =  cmd_fg_clr,
   s =  "purple",
@@ -30,7 +28,8 @@ local mode_colors = {
 }
 
 local lualine_setup = function()
-  local vague = require('lualine.themes.vague')
+  -- local theme = require('lualine.themes.vague')
+  local theme = require('lualine.themes.darkvoid')
   local fg_clr = normal_fg_clr
   -- local bg_clr = '#0d0d1c'
   local bg_clr = 'none'
@@ -41,15 +40,20 @@ local lualine_setup = function()
     c =  '😈',
   }
 
-  for _, obj in pairs(vague) do
-    obj.a.fg = fg_clr; obj.a.bg = bg_clr
-    obj.b.fg = fg_clr; obj.b.bg = bg_clr
-    if obj.c ~= nil then
-      obj.c.fg = fg_clr; obj.c.bg = bg_clr
-    end
-  end
+  -- for _, obj in pairs(theme) do
+  --   obj.a.fg = fg_clr; obj.a.bg = bg_clr
+  --   obj.b.fg = fg_clr; obj.b.bg = bg_clr
+  --   if obj.c ~= nil then
+  --     obj.c.fg = fg_clr; obj.c.bg = bg_clr
+  --   end
+  -- end
 
   require('lualine').setup({
+    options = {
+      section_separators = { left = '', right = '' },
+      component_separators = { left = '', right = '' },
+      theme = theme
+    },
     icons_enabled = true,
     sections = {
       lualine_a = {
@@ -66,9 +70,9 @@ local lualine_setup = function()
             -- end
             return emoji .. ' ✦ ' .. string.lower(string.sub(mode, 1, 3))
           end,
-          color = function()
-            return { fg = mode_colors[vim.fn.mode()] }
-          end
+          -- color = function()
+          --   return { fg = mode_colors[vim.fn.mode()] }
+          -- end
         }
       },
       lualine_b = {
@@ -88,12 +92,7 @@ local lualine_setup = function()
       lualine_x = {},
       lualine_y = { 'location' },
       lualine_z = {}
-    },
-    options = {
-      section_separators = { left = '', right = '' },
-      component_separators = { left = '', right = '' },
-      theme = vague,
-    },
+    }
   })
 end
 

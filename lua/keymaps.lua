@@ -20,8 +20,7 @@ M.setup = function()
         builtin_func({ cwd = cursor_dir['absolute_path'] })
       else
         vim.notify('Node under cursor in file tree not valid, defauling...', vim.log.levels.INFO)
-        builtin_func()
-      end
+        builtin_func() end
     end
 
     Util.set_mapping('n', '<Leader>ff', builtin.files, { desc = 'Grep for files' })

@@ -1,3 +1,5 @@
+local Util = require('util.util')
+
 return {
   {
     -- NvimTree: File system explorer (:h NvimTree)
@@ -40,9 +42,6 @@ return {
           show_end = false -- underlines are shown (set true) by default
         },
       })
-
-      vim.cmd('highlight IblIndent guifg=#1e1e24')
-      vim.cmd('highlight IblScope gui=none guifg=#8a8fa8')
     end
   },
   {
