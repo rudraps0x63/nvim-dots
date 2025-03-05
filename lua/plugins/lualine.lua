@@ -28,10 +28,10 @@ local mode_colors = {
 }
 
 local lualine_setup = function()
-  -- local theme = require('lualine.themes.vague')
-  local theme = require('lualine.themes.darkvoid')
+  local theme = require('lualine.themes.vague')
   local fg_clr = normal_fg_clr
   -- local bg_clr = '#0d0d1c'
+  -- local fg_clr = 'none'
   local bg_clr = 'none'
 
   local lualine_a_icons = {
@@ -65,9 +65,6 @@ local lualine_setup = function()
             --   first_time = false
             -- end
             local emoji = lualine_a_icons[vim.fn.mode()] or lualine_a_icons.n
-            -- if string.len(mode) < 7 then
-            --   mode = mode .. string.rep(' ', 7 - string.len(mode))
-            -- end
             return emoji .. ' ✦ ' .. string.lower(string.sub(mode, 1, 3))
           end,
           -- color = function()

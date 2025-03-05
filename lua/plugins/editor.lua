@@ -7,7 +7,8 @@ return {
     version = '*',
     lazy = false,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function() require('nvim-tree').setup({
+    config = function()
+      require('nvim-tree').setup({
       view = { number = true },
       renderer = {
         indent_markers = {
@@ -122,13 +123,21 @@ return {
   {
     'rlane/pounce.nvim',
     config = function()
-      local map = vim.keymap.set
-      map("n", "s", function() require'pounce'.pounce { } end)
-      map("n", "S", function() require'pounce'.pounce { do_repeat = true } end)
-      map("x", "s", function() require'pounce'.pounce { } end)
-      map("o", "gs", function() require'pounce'.pounce { } end)
-      map("n", "S", function() require'pounce'.pounce { input = {reg="/"} } end)
+      local pounce = require('pounce')
+
+      Util.set_mapping('n', 's', function() pounce.pounce({}) end, {
+        desc = 'Fuzzy search and pounce'
+      })
+      Util.set_mapping('n', 'S', function() pounce.pounce({ do_repeat = true }) end, {
+        desc = 'Fuzzy search and pounce repeat'
+      })
     end
-  }
+  },
+  -- {
+  --   'SidOfc/carbon.nvim',
+  --   config = function()
+  --     require('carbon').setup()
+  --   end
+  -- }
 }
 
