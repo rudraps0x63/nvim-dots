@@ -73,14 +73,22 @@ local lualine_setup = function()
         }
       },
       lualine_b = {
-        { 'branch' }, { 'diff' },
+        {
+          'branch',
+          color = function()
+            return { fg = '#20b2aa' }
+          end
+        },
+        {
+          'diff'
+        },
       },
       lualine_c = {
         {
           'filename',
           file_status = true,
           path = 1,
-          symbols = { readonly = '[read-only]' },
+          symbols = { readonly = '[RDONLY]' },
           fmt = function(fname, _)
             return fname .. ' ✦'
           end

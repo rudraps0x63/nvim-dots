@@ -1,26 +1,58 @@
 local M = {}
 local Util = require('util.util')
 
-M.setup = function()
-  local nt_api = require('nvim-tree.api')
-  local builtin = require('fzf-lua')
+local require_or_nil = function(mod)
+  local ok, module = pcall(require, mod)
 
-  -- NvimTree
-  if nt_api ~= nil then
-    Util.set_mapping('n', '<Leader>tt', nt_api.tree.toggle, { desc = 'Toggle file tree' })
-    Util.set_mapping('n', '<Leader>T', nt_api.tree.open, { desc = 'Focus file tree, open if not' })
+  if ok then
+    return module
   end
 
-  -- Picker
-  if builtin ~= nil then
-    local apply_func_dir_under_cursor = function(builtin_func)
-      local cursor_dir = nt_api.tree.get_node_under_cursor()
+  return nil
+end
 
-      if (cursor_dir ~= nil) and (cursor_dir['type'] == 'directory') then
+M.setup = function()
+  local nt_api = require_or_nil('nvim-tree.api')
+  local builtin = require_or_nil('fzf-lua')
+  local carbon = require_or_nil('carbon')
+  local get_node_under_cursor = function() -- Empty function in case NvimTree is not present
+    return nil
+  end
+
+  -- Carbon
+  if carbon then
+    Util.set_mapping('n', '<Leader>tt', function()
+      -- if Util.GLOBAL_CARBON_EXPLORER_FIRST_TIME then
+      --   require('carbon.view').close_sidebar()
+      --   Util.GLOBAL_CARBON_EXPLORER_OPEN = false
+      -- else
+      --   carbon.explore_sidebar()
+      --   Util.GLOBAL_CARBON_EXPLORER_OPEN = true
+      -- end
+
+      carbon.toggle_sidebar()
+    end, { desc = 'Toggle file tree' })
+  end
+
+  -- NvimTree
+  if nt_api then
+    Util.set_mapping('n', '<Leader>tt', nt_api.tree.toggle, { desc = 'Toggle file tree' })
+    Util.set_mapping('n', '<Leader>T', nt_api.tree.open, { desc = 'Focus file tree, open if not' })
+
+    get_node_under_cursor = nt_api.tree.get_node_under_cursor
+  end
+
+  -- Picker (FzfLua)
+  if builtin then
+    local apply_func_dir_under_cursor = function(builtin_func)
+      local cursor_dir = get_node_under_cursor()
+
+      if cursor_dir ~= nil and cursor_dir['type'] == 'directory' then
         builtin_func({ cwd = cursor_dir['absolute_path'] })
       else
-        vim.notify('Node under cursor in file tree not valid, defauling...', vim.log.levels.INFO)
-        builtin_func() end
+        vim.notify('Node under cursor in file tree not valid, defaulting...', vim.log.levels.INFO)
+        builtin_func()
+      end
     end
 
     Util.set_mapping('n', '<Leader>ff', builtin.files, { desc = 'Grep for files' })
@@ -51,7 +83,7 @@ M.setup = function()
     })
   end
 
-  -- General
+  -- Misc.
   Util.set_mapping('n', ']b', '<cmd>bnext<CR>', { desc = 'Go to next buffer' })
   Util.set_mapping('n', '[b', '<cmd>bprev<CR>', { desc = 'Go to previous buffer' })
 
@@ -73,11 +105,11 @@ M.setup = function()
 
   Util.set_mapping('n', '<Space>h', '<cmd>helpclose<CR>')
 
-  Util.set_mapping('n', '<Space>tt', function()
-    vim.cmd('new')
-    vim.cmd('term')
-    vim.api.nvim_win_set_height(0, 15)
-  end, { desc = 'Open terminal window' })
+  -- Util.set_mapping('n', '<Space>tt', function()
+  --   vim.cmd('new')
+  --   vim.cmd('term')
+  --   vim.api.nvim_win_set_height(0, 15)
+  -- end, { desc = 'Open terminal window' })
 end
 
 return M

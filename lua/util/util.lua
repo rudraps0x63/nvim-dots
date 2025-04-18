@@ -7,7 +7,7 @@ local win_stack = {} -- Map of actual window handles (non floats) to arrays of w
 M.ENV_HOME = os.getenv('HOME') or ''
 M.PREFERRED_BORDER_STYLE = 'rounded'
 
-LSP_HEIRARCHY_FLOAT_VAR = 'lsp-heirarchy:var:is_float'
+LSP_HEIRARCHY_FLOAT_VAR = 'lsp-heirarchy:option:is_float'
 LSP_HEIRARCHY_GROUP_NAME = 'lsp-heirarchy:augroup:win_closed'
 
 M.set_mapping = function(mode, lhs, rhs, opts)

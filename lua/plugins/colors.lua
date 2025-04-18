@@ -1,56 +1,88 @@
 return {
   -- {
-  --   'savq/melange-nvim',
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   'alejandrolaguna20/noctis.nvim',
   --   config = function()
-  --     -- vim.cmd('colorscheme melange')
+  --     -- vim.cmd.colorscheme('noctis')
+  --   end,
+  -- },
+  -- {
+  --   "racagogi/mytilus",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function()
+  --     require("mytilus.configs").setup(
+  --       {
+  --         theme    = 'dark',
+  --         options  = {
+  --           sideBarDim = true, --if false then sidebar bg is same normal
+  --           statusBarRevers = true, --if false, statusBarRevers bg is d2_black,
+  --           NCWindowDim = true, --if false, not current window bg is same normal
+  --           func = { bold = true },
+  --           type = {},
+  --           statement = {},
+  --           keyword = { bold = true },
+  --           constant = { bold = true },
+  --           comment = {},
+  --           doc = {},
+  --         },
+  --         overides = {} -- ["@string"] = { fg = "#222222", italic = true },
+  --       }
+  --     )
+  --
+  --     vim.cmd [[colorscheme mytilus]]
   --   end
   -- },
-  -- -- {
-  -- --     'fenetikm/falcon',
-  -- --     lazy = false,
-  -- --     priority = 1000,
-  -- --     config = function()
-  -- --         -- vim.cmd([[colorscheme falcon]])
-  -- --     end
-  -- -- },
-  -- -- {
-  -- --     'techtuner/aura-neovim',
-  -- --     lazy = false,
-  -- --     priority = 1000,
-  -- --     config = function()
-  -- --         -- vim.cmd('colorscheme aura')
-  -- --     end
-  -- -- },
-  -- -- {
-  -- --     'DanielEliasib/sweet-fusion',
-  -- --     name = 'sweet-fusion',
-  -- --     priority = 1000,
-  -- --     opts = {
-  -- --         transparency = true,
-  -- --         dim_inactive = true,
-  -- --         hl_styles = {
-  -- --             bold = true,
-  -- --             comments = { italic = false },
-  -- --             keywords = { italic = false },
-  -- --             functions = { italic = false },
-  -- --             variables = { }
-  -- --         },
-  -- --     },
-  -- --     config = function()
-  -- --         vim.cmd('colorscheme sweet-fusion')
-  -- --     end
-  -- -- },
-  -- -- {
-  -- --     'metalelf0/jellybeans-nvim',
-  -- --     lazy = false,
-  -- --     priority = 1000,
-  -- --     dependencies = { 'rktjmp/lush.nvim' },
-  -- --     config = function()
-  -- --         -- vim.cmd('colorscheme jellybeans-nvim')
-  -- --     end
-  -- -- },
+  -- {
+  --   '34-c/zenburn-m',
+  --   config = function()
+  --     vim.cmd.colorscheme('zenburn-m')
+  --   end
+  -- },
+  -- {
+  --     'fenetikm/falcon',
+  --     lazy = false,
+  --     priority = 1000,
+  --     config = function()
+  --         -- vim.cmd([[colorscheme falcon]])
+  --     end
+  -- },
+  -- {
+  --     'techtuner/aura-neovim',
+  --     lazy = false,
+  --     priority = 1000,
+  --     config = function()
+  --         -- vim.cmd('colorscheme aura')
+  --     end
+  -- },
+  -- {
+  --     'DanielEliasib/sweet-fusion',
+  --     name = 'sweet-fusion',
+  --     priority = 1000,
+  --     opts = {
+  --         transparency = true,
+  --         dim_inactive = true,
+  --         hl_styles = {
+  --             bold = true,
+  --             comments = { italic = false },
+  --             keywords = { italic = false },
+  --             functions = { italic = false },
+  --             variables = { }
+  --         },
+  --     },
+  --     config = function()
+  --         vim.cmd('colorscheme sweet-fusion')
+  --     end
+  -- },
+  -- {
+  --     'metalelf0/jellybeans-nvim',
+  --     lazy = false,
+  --     priority = 1000,
+  --     dependencies = { 'rktjmp/lush.nvim' },
+  --     config = function()
+  --         -- vim.cmd('colorscheme jellybeans-nvim')
+  --     end
+  -- },
   -- {
   --   'dgox16/oldworld.nvim',
   --   lazy = false,
@@ -124,34 +156,37 @@ return {
     priority = 1001,
     config = function()
       require('darkvoid').setup({
-        transparent = false,
+        transparent = true,
         glow = false,
         show_end_of_buffer = false,
         colors = {
-          string = '#acfffc'
+          -- string = '#acfffc'
+          string = '#a9a2e0'
         }
       })
 
       vim.cmd.colorscheme('darkvoid')
       -- vim.cmd('hi Normal guibg=none')
-      -- vim.cmd('hi NormalFloat guibg=none')
+      vim.cmd('hi NormalFloat guibg=#1c1c1c')
       -- vim.cmd('hi StatusLine guibg=none')
-      vim.cmd('hi Keyword gui=bold')
+      vim.cmd('hi @keyword guifg=#ffffc5 gui=bold')
+      vim.cmd('hi! link @keyword.return @keyword')
+      -- vim.cmd('hi @keyword.return guifg=#ffffc5 gui=bold')
       vim.cmd('hi IblIndent gui=none guifg=#232326')
       vim.cmd('hi IblScope gui=none guifg=#8a8fa8')
       vim.cmd('hi Search gui=bold guibg=#1bfd9c guifg=#000000')
       vim.cmd('hi IncSearch gui=bold guibg=#1bfd9c guifg=#000000')
     end
   },
-  {
-    "nyoom-engineering/oxocarbon.nvim",
-    -- Add in any other configuration; 
-    --   event = foo, 
-    config = function ()
-      -- vim.cmd.colorscheme('oxocarbon')
-    end
-    --   end,
-  },
+  -- {
+  --   "nyoom-engineering/oxocarbon.nvim",
+  --   -- Add in any other configuration; 
+  --   --   event = foo, 
+  --   config = function ()
+  --     -- vim.cmd.colorscheme('oxocarbon')
+  --   end
+  --   --   end,
+  -- },
   -- {
   --   "rockyzhang24/arctic.nvim",
   --   branch = "v2",
@@ -159,7 +194,7 @@ return {
   --   config = function()
   --     vim.cmd.colorscheme('arctic')
   --   end
-  -- }
+  -- },
   -- {
   --   'hsi/lapland.nvim',
   --   config = function()
@@ -182,16 +217,6 @@ return {
   --     vim.cmd.colorscheme("sakura");
   --     vim.cmd('hi Normal guibg=none');
   --   end
-  -- }
-  -- {
-  --   'zenbones-theme/zenbones.nvim',
-  --   dependencies = 'rktjmp/lush.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     -- vim.g.zenbones_darken_comments = 45
-  --     -- vim.cmd.colorscheme('zenbones')
-  --   end
-  -- }
+  -- },
 }
 

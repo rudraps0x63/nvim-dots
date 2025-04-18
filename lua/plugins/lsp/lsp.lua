@@ -105,15 +105,15 @@ return {
       end
     end
   },
-  {
-    'rmagatti/goto-preview',
-    lazy = true,
-    event = 'BufEnter',
-    config = function()
-      require('goto-preview').setup({
-        default_mappings = true
-      })
-    end
-  }
+  -- {
+  --   'rmagatti/goto-preview',
+  --   lazy = true,
+  --   event = 'BufEnter',
+  --   config = function()
+  --     require('goto-preview').setup({
+  --       default_mappings = true
+  --     })
+  --   end
+  -- }
 }
 
