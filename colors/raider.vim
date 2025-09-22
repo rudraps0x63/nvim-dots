@@ -93,7 +93,8 @@ hi! link TabLineSel StatusLine
 hi WildMenu guifg=#ecb55d guibg=#2a2a2a gui=NONE cterm=NONE
 hi VertSplit guifg=#707070 guibg=NONE gui=NONE cterm=NONE
 hi! link WinSeparator VertSplit
-hi NormalFloat guifg=#c9c9c9 guibg=#2a2a2a gui=NONE cterm=NONE
+"hi NormalFloat guifg=#c9c9c9 guibg=#2a2a2a gui=NONE cterm=NONE
+hi NormalFloat guifg=#c9c9c9 guibg=#222222 gui=NONE cterm=NONE
 hi! link FloatBorder WinSeparator
 hi Title guifg=#a79180 guibg=NONE gui=bold cterm=bold
 hi LineNr guifg=#707070 guibg=NONE gui=NONE cterm=NONE

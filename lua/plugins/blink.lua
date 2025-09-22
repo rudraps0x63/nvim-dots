@@ -22,10 +22,7 @@ return {
         menu = {
           auto_show = true,
           draw = { -- nvim-cmp style menu
-            columns = {
-              { "label", "label_description", gap = 1 },
-              { "kind" }
-            },
+            columns = { { 'label', 'label_description', gap = 1 }, { 'kind' } },
           },
           border = Util.PREFERRED_BORDER_STYLE
         },

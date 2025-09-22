@@ -11,12 +11,7 @@
 
 -- On startup
 require('common').setup()
-
--- vim.g.zenburn_high_Contrast = 1
--- vim.g.zenburn_disable_bold_CursorBars = 1
--- vim.cmd('colorscheme zenburn')
--- vim.cmd('hi IblScope ctermfg=248 guifg=#9fafaf')
--- vim.cmd('hi Normal ctermbg=none guibg=none')
+-- require('lsp').setup()
 
 -- Bootstrap Lazy
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -27,7 +22,7 @@ if not vim.loop.fs_stat(lazypath) then
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
+    '--branch=stable',
     lazypath
   })
 end
@@ -36,18 +31,22 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup external plugins in lua/plugins
 require('lazy').setup({
   change_detection = {
-    enabled = true,
+    enabled = false,
     notify = false -- get a notification when changes are found
   },
   spec = {
     { import = 'plugins' },
-    { import = 'plugins.lsp' }
+    { import = 'colorschemes' },
   },
-  ui = {
-    border = require('util.util').PREFERRED_BORDER_STYLE
-  }
+  ui = { border = require('util.util').PREFERRED_BORDER_STYLE }
 })
 
 -- All plugins loaded, keymaps available
 require('keymaps').setup()
+
+-- vim.g.zenburn_high_Contrast = 1
+-- vim.g.zenburn_disable_bold_CursorBars = 1
+-- vim.cmd('colorscheme zenburn')
+-- vim.cmd('hi IblScope ctermfg=248 guifg=#9fafaf')
+-- vim.cmd('hi Normal ctermbg=none guibg=none')
 

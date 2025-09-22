@@ -31,7 +31,7 @@ return {
               diagnostics = { enable = true }
             }
           }
-        }
+        },
       }
 
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -84,36 +84,29 @@ return {
           end
 
           if client.supports_method(ms.textDocument_hover) then
-            Util.set_mapping('n', 'K', vim.lsp.buf.hover, {
-              desc = 'Get hover information'
-            })
+            Util.set_mapping('n', 'K', vim.lsp.buf.hover, { desc = 'Get hover information' })
           end
         end
       })
+
+      local hover = vim.lsp.buf.hover
+      vim.lsp.buf.hover = function()
+        return hover({ border = Util.PREFERRED_BORDER_STYLE })
+      end
+
+      local signature_help = vim.lsp.buf.signature_help
+      vim.lsp.buf.signature_help = function()
+        return signature_help({ border = Util.PREFERRED_BORDER_STYLE })
+      end
 
       for sv, config in pairs(sv_configuration) do
         lspconfig[sv].setup({
           settings = config.settings or {},
           init_options = config.init_options or {},
           capabilities = require('blink.cmp').get_lsp_capabilities(),
-          handlers = {
-            [ms.textDocument_hover] = vim.lsp.with(vim.lsp.handlers[ms.textDocument_hover], {
-              border = Util.PREFERRED_BORDER_STYLE
-            })
-          }
         })
       end
     end
   },
-  -- {
-  --   'rmagatti/goto-preview',
-  --   lazy = true,
-  --   event = 'BufEnter',
-  --   config = function()
-  --     require('goto-preview').setup({
-  --       default_mappings = true
-  --     })
-  --   end
-  -- }
 }
 
