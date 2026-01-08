@@ -13,6 +13,7 @@ M.setup = function()
 
   vim.o.cursorline = true
   vim.o.termguicolors = true
+  vim.o.winborder = 'rounded'
 
   vim.o.hlsearch = false
   vim.o.incsearch = true
@@ -42,6 +43,59 @@ M.setup = function()
       vim.o.shiftwidth = 2
     end
   })
+
+  -- Statusline
+  local cmp = {} -- statusline components
+  local hi_pattern = '%%#%s#%s%%*'
+
+  function _G._statusline_component(name)
+    return cmp[name]()
+  end
+
+  function cmp.diagnostic_status()
+    local mode = vim.api.nvim_get_mode().mode
+    local ignore = {
+      ['c'] = true, -- command mode
+      ['t'] = true  -- terminal mode
+    }
+
+    if ignore[mode] then
+      return ''
+    end
+
+    local status = '   '
+    local levels = vim.diagnostic.severity
+    local errors = #vim.diagnostic.get(0, { severity = levels.ERROR })
+    local warnings = #vim.diagnostic.get(0, { severity = levels.WARN })
+
+    if errors > 0 then
+      status = status .. errors .. 'E'
+    end
+
+    if warnings > 0 then
+      if errors > 0 then
+        status = status .. ','
+      end
+      status = status .. warnings .. 'W  '
+    end
+
+    return status
+  end
+
+  function cmp.position()
+    return hi_pattern:format('Search',' %3l:%-2c ')
+  end
+
+  local statusline = {
+    '%f',
+    '%r',
+    '%m',
+    '%{%v:lua._statusline_component("diagnostic_status")%} ',
+    '%=',
+    '%{%v:lua._statusline_component("position")%}'
+  }
+
+  vim.o.statusline = table.concat(statusline, '')
 end
 
 return M

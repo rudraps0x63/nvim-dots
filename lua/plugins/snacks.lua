@@ -4,9 +4,10 @@ return {
     priority = 1000,
     lazy = false,
     opts = function(_, _)
-      vim.api.nvim_set_hl(0, 'SnacksPickerPreviewCursorLine', { link = 'CursorLine' })
+      -- vim.api.nvim_set_hl(0, 'SnacksPickerPreviewCursorLine', { link = 'CursorLine' })
       vim.api.nvim_set_hl(0, 'SnacksPickerListCursorLine', {
-        bg = vim.api.nvim_get_hl(0, { name = 'Visual' }).bg,
+        bg = vim.api.nvim_get_hl(0, { name = 'Visual' }).bg, -- For darkvoid
+        -- bg = '#1f161a',
         bold = true
       })
 

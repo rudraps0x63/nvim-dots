@@ -11,7 +11,6 @@
 
 -- On startup
 require('common').setup()
--- require('lsp').setup()
 
 -- Bootstrap Lazy
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -38,15 +37,11 @@ require('lazy').setup({
     { import = 'plugins' },
     { import = 'colorschemes' },
   },
-  ui = { border = require('util.util').PREFERRED_BORDER_STYLE }
+  -- ui = { border = require('util.util').PREFERRED_BORDER_STYLE }
 })
 
+-- Setup lsp
+require('lsp').setup()
 -- All plugins loaded, keymaps available
 require('keymaps').setup()
-
--- vim.g.zenburn_high_Contrast = 1
--- vim.g.zenburn_disable_bold_CursorBars = 1
--- vim.cmd('colorscheme zenburn')
--- vim.cmd('hi IblScope ctermfg=248 guifg=#9fafaf')
--- vim.cmd('hi Normal ctermbg=none guibg=none')
 

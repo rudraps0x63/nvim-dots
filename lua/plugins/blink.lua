@@ -14,10 +14,6 @@ return {
         ['<C-h>'] = { 'snippet_backward', 'fallback' },
         ['<CR>'] = { 'accept', 'fallback' },
       },
-      sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-        cmdline = { enabled = true } -- Autocomplete for vim commands
-      },
       completion = {
         menu = {
           auto_show = true,
@@ -26,8 +22,24 @@ return {
           },
           border = Util.PREFERRED_BORDER_STYLE
         },
-        documentation = {
-          window = { border = Util.PREFERRED_BORDER_STYLE }
+        documentation = { window = { border = Util.PREFERRED_BORDER_STYLE } },
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        cmdline = { },
+        providers = {
+          -- cmdline = {
+          --   enabled = false,
+          --   min_keyword_length = function(ctx)
+          --     -- when typing a command, only show when the keyword is 3 characters or longer
+          --     if ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil then
+          --       return 3
+          --     end
+          --
+          --     return 0
+          --   end,
+          --   -- keymap = { preset = 'inherit' },
+          -- } -- Autocomplete for vim commands
         },
       },
       signature = {

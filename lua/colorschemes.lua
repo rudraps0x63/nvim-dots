@@ -159,12 +159,9 @@ return {
   },
   -- {
   --   "nyoom-engineering/oxocarbon.nvim",
-  --   -- Add in any other configuration; 
-  --   --   event = foo, 
   --   config = function ()
-  --     -- vim.cmd.colorscheme('oxocarbon')
+  --     vim.cmd.colorscheme('oxocarbon')
   --   end
-  --   --   end,
   -- },
   -- {
   --   "rockyzhang24/arctic.nvim",
@@ -172,18 +169,6 @@ return {
   --   dependencies = { "rktjmp/lush.nvim" },
   --   config = function()
   --     vim.cmd.colorscheme('arctic')
-  --   end
-  -- },
-  -- {
-  --   'hsi/lapland.nvim',
-  --   config = function()
-  --     vim.cmd.colorscheme('lapland')
-  --
-  --     vim.cmd('highlight IncSearch gui=bold guifg=#13151a guibg=#a2b2db')
-  --     vim.cmd('highlight MatchParen gui=bold guifg=#cdcdcd guibg=#363738')
-  --     vim.cmd('highlight IblIndent guibg=none guifg=#2b2d36')
-  --     vim.cmd('highlight IblWhitespace guibg=none guifg=#2b2d36')
-  --     vim.cmd('highlight IblScope gui=none guibg=none guifg=#8a8fa8')
   --   end
   -- },
   -- {
@@ -235,19 +220,21 @@ return {
     priority = 1001,
     config = function()
       require('darkvoid').setup({
-        -- transparent = true,
+        transparent = true,
         glow = false,
         show_end_of_buffer = false,
         colors = {
           -- type_builtin = "#ffffc5",
           string = '#a49bd1',
           -- string = '#94baca', -- Raider muted cyan
+          -- string = '#96a8a1', -- Raider muted green
         }
       })
 
       vim.cmd.colorscheme('darkvoid')
 
-      vim.cmd('hi NormalFloat guibg=#1c1c1c')
+      -- vim.cmd('hi NormalFloat guibg=#1c1c1c')
+      vim.cmd('hi NormalFloat guibg=none')
       vim.cmd('hi StatusLine guifg=black guibg=#e3e1cf gui=none')
       vim.cmd('hi @keyword guifg=#ffffc5 gui=bold')
       -- vim.cmd('hi @keyword guifg=#8fa89e gui=bold')
@@ -258,7 +245,10 @@ return {
       vim.cmd('hi IblScope gui=none guifg=#8a8fa8')
       vim.cmd('hi Search gui=bold guibg=#1bfd9c guifg=#000000')
       vim.cmd('hi IncSearch gui=bold guibg=#1bfd9c guifg=#000000')
+      vim.cmd('hi Special guifg=#1bfd9c')
 
+
+      -- vim.cmd.colorscheme('darkvoid')
       -- vim.cmd('hi Normal guibg=#222222')
       -- vim.cmd('hi @keyword guifg=#858ca6 gui=bold')
       -- vim.cmd('hi @keyword.return guifg=#858ca6 gui=bold')
@@ -277,12 +267,57 @@ return {
       -- vim.cmd('hi IblScope gui=none guifg=#8a8fa8')
     end
   },
-  -- {
-  --   'andreypopp/vim-colors-plain',
-  --   lazy = false,
-  --   config = function()
-  --     vim.cmd.colorscheme('plain')
-  --   end
-  -- },
+  {
+    "slugbyte/lackluster.nvim",
+    lazy = false,
+    priority = 1000,
+    init = function()
+      require('lackluster').setup({
+        -- You can overwrite the following background colors by setting them to one of...
+        --   1) a hexcode like "#a1b2c3" for a custom color
+        --   2) "none" for transparency
+        --   3) "default" or nil will just use whatever lackluster's default is.
+        tweak_background = {
+          normal = 'default',    -- main background
+          -- normal = 'none',    -- transparent
+          -- normal = '#a1b2c3',    -- hexcode 
+          -- normal = color.green,    -- lackluster color
+          -- telescope = 'default', -- telescope
+          -- menu = 'default',      -- nvim_cmp, wildmenu ... (bad idea to transparent)
+          -- popup = 'default',     -- lazy, mason, whichkey ... (bad idea to transparent)
+        },
+      })
+
+      -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
+    end,
+  },
+  {
+    "zenbones-theme/zenbones.nvim",
+    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    -- dependencies = "rktjmp/lush.nvim",
+    lazy = false,
+    priority = 1000,
+    -- you can set set configuration options here
+    config = function()
+      -- vim.g.zenbones_compat = 1
+      -- vim.cmd.colorscheme('zenbones')
+      --
+      -- vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1c1917' })
+      -- vim.api.nvim_set_hl(0, 'String', { italic = false, fg = '#bf8fb5' })
+      -- vim.api.nvim_set_hl(0, 'Constant', { italic = false })
+    end
+  },
+  {
+    "wtfox/jellybeans.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {}, -- Optional
+    config = function()
+      -- vim.cmd[[colorscheme jellybeans-muted]]
+    end
+  },
 }
 
