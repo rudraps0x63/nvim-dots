@@ -47,9 +47,9 @@ M.setup = function()
     --
     -- Util.set_mapping('n', '<Leader>ld', snacks.picker.diagnostics_buffer, { desc = 'LSP diagnostics' })
     -- Util.set_mapping('n', '<Leader>lref', snacks.picker.lsp_references, { desc = 'LSP references' })
-    -- Util.set_mapping('n', '<Leader>ls', function()
-    --   snacks.picker.lsp_symbols({ filter = { default = { 'Function' }}})
-    -- end, { desc = 'LSP symbols (functions)' })
+    Util.set_mapping('n', '<Leader>ls', function()
+      snacks.picker.lsp_symbols({ filter = { default = { 'Function' }}})
+    end, { desc = 'LSP symbols (functions)' })
     --
     -- Util.set_mapping('n', '<Leader>re', snacks.picker.resume, { desc = 'Resume last picker' })
     --

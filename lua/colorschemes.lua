@@ -246,6 +246,7 @@ return {
       vim.cmd('hi Search gui=bold guibg=#1bfd9c guifg=#000000')
       vim.cmd('hi IncSearch gui=bold guibg=#1bfd9c guifg=#000000')
       vim.cmd('hi Special guifg=#1bfd9c')
+      vim.cmd('hi @lsp.type.parameter guifg=#ffb6c1')
 
 
       -- vim.cmd.colorscheme('darkvoid')
