@@ -30,6 +30,9 @@ M.setup = function()
     settings = { python = {} }
   })
 
+  local capabilities = {
+    semanticTokens = nil
+  }
   vim.lsp.config('*', {
     capabilities = require('blink.cmp').get_lsp_capabilities(),
   })

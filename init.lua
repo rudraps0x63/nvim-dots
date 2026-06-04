@@ -44,4 +44,3 @@ require('lazy').setup({
 require('lsp').setup()
 -- All plugins loaded, keymaps available
 require('keymaps').setup()
-

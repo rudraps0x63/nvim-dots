@@ -1,4 +1,38 @@
 return {
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    'aylen384/zenburn.nvim',
+    lazy = false,
+    config = function()
+      vim.cmd.colorscheme('zenburn')
+    end
+  },
+  { 'jaredgorski/spacecamp', lazy = false },
+  {
+    "navazjm/ascua.nvim",
+    name = "ascua",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        -- vim.cmd("colorscheme ascua")
+    end
+},
+  {
+  'Nequo/fjell-nvim',
+  config = function()
+    require('fjell').setup({
+      alternate_diffs = true  -- optional
+    })
+    -- vim.cmd.colorscheme('fjell')
+  end
+},
+  {
+    'Nequo/emberdark-nvim',
+    lazy = false,
+    config = function()
+      -- vim.cmd.colorscheme('melange')
+    end
+  },
   {
     'savq/melange-nvim',
     priority = 1000,
@@ -231,22 +265,22 @@ return {
         }
       })
 
-      vim.cmd.colorscheme('darkvoid')
-
-      -- vim.cmd('hi NormalFloat guibg=#1c1c1c')
-      vim.cmd('hi NormalFloat guibg=none')
-      vim.cmd('hi StatusLine guifg=black guibg=#e3e1cf gui=none')
-      vim.cmd('hi @keyword guifg=#ffffc5 gui=bold')
-      -- vim.cmd('hi @keyword guifg=#8fa89e gui=bold')
-      vim.cmd('hi! link @keyword.return @keyword')
-      vim.cmd('hi NonText guifg=#878282')
-      -- vim.cmd('hi @keyword.return guifg=#ffffc5 gui=bold')
-      vim.cmd('hi IblIndent gui=none guifg=#2f2f33')
-      vim.cmd('hi IblScope gui=none guifg=#8a8fa8')
-      vim.cmd('hi Search gui=bold guibg=#1bfd9c guifg=#000000')
-      vim.cmd('hi IncSearch gui=bold guibg=#1bfd9c guifg=#000000')
-      vim.cmd('hi Special guifg=#1bfd9c')
-      vim.cmd('hi @lsp.type.parameter guifg=#ffb6c1')
+      -- vim.cmd.colorscheme('darkvoid')
+      --
+      -- -- vim.cmd('hi NormalFloat guibg=#1c1c1c')
+      -- vim.cmd('hi NormalFloat guibg=none')
+      -- vim.cmd('hi StatusLine guifg=black guibg=#e3e1cf gui=none')
+      -- vim.cmd('hi @keyword guifg=#ffffc5 gui=bold')
+      -- -- vim.cmd('hi @keyword guifg=#8fa89e gui=bold')
+      -- vim.cmd('hi! link @keyword.return @keyword')
+      -- vim.cmd('hi NonText guifg=#878282')
+      -- -- vim.cmd('hi @keyword.return guifg=#ffffc5 gui=bold')
+      -- vim.cmd('hi IblIndent gui=none guifg=#2f2f33')
+      -- vim.cmd('hi IblScope gui=none guifg=#8a8fa8')
+      -- vim.cmd('hi Search gui=bold guibg=#1bfd9c guifg=#000000')
+      -- vim.cmd('hi IncSearch gui=bold guibg=#1bfd9c guifg=#000000')
+      -- vim.cmd('hi Special guifg=#1bfd9c')
+      -- vim.cmd('hi @lsp.type.parameter guifg=#ffb6c1')
 
 
       -- vim.cmd.colorscheme('darkvoid')
@@ -309,6 +343,11 @@ return {
       -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#1c1917' })
       -- vim.api.nvim_set_hl(0, 'String', { italic = false, fg = '#bf8fb5' })
       -- vim.api.nvim_set_hl(0, 'Constant', { italic = false })
+      -- vim.api.nvim_set_hl(0, 'Boolean', { italic = false })
+      -- vim.api.nvim_set_hl(0, 'Include', { bold = false })
+      -- vim.api.nvim_set_hl(0, 'cInclude', { bold = true })
+      -- vim.cmd('hi! link cDefine Statement')
+      -- vim.api.nvim_set_hl(0, 'cDefine', { bold = false })
     end
   },
   {

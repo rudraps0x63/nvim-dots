@@ -24,6 +24,16 @@ M.setup = function()
 
   vim.o.swapfile = false
 
+  vim.cmd.colorscheme('default')
+  vim.api.nvim_set_hl(0, 'Normal', { bg = nil })
+  vim.api.nvim_set_hl(0, 'NormalFloat', { bg = nil })
+  vim.api.nvim_set_hl(0, 'Structure', { bold = true })
+  vim.api.nvim_set_hl(0, 'Function', { fg = '#ffffc5' })
+  vim.api.nvim_set_hl(0, 'String', { italic = false })
+  vim.api.nvim_set_hl(0, 'Constant', { italic = false })
+  vim.api.nvim_set_hl(0, 'Boolean', { italic = false })
+  vim.api.nvim_set_hl(0, '@lsp.type.macro', { italic = false })
+
   -- Autocommands
   -- Highlight yanked text for 200ms
   vim.api.nvim_create_autocmd('TextYankPost', {
